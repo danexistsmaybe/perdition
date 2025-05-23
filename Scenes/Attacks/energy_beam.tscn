@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2ddo02l8waqf"]
+
+[ext_resource type="Script" path="res://scripts/Attacks/energy_beam.gd" id="1_tsffi"]
+
+[sub_resource type="Curve" id="Curve_erclh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.610526, 0.901099), -0.307045, -0.307045, 0, 0, Vector2(0.878947, 0.549451), -2.0265, -2.0265, 0, 0, Vector2(0.989474, 0.021978), 0.0, 1.4, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_500wx"]
+offsets = PackedFloat32Array(0, 0.446667, 1)
+colors = PackedColorArray(0.286275, 1, 0, 1, 0.27451, 0.705882, 0.196078, 0.827451, 0.691357, 0.691357, 0.691357, 0.188235)
+
+[node name="EnergyBeam" type="Line2D"]
+points = PackedVector2Array(1054, 130)
+width = 3.0
+width_curve = SubResource("Curve_erclh")
+gradient = SubResource("Gradient_500wx")
+joint_mode = 1
+script = ExtResource("1_tsffi")

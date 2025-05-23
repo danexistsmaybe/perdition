@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bawr64aj8n2gc"]
+
+[ext_resource type="PackedScene" uid="uid://bghm1h5hgm6do" path="res://Scenes/guy.tscn" id="1_hx1a7"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_vxn1v"]
+[ext_resource type="Texture2D" uid="uid://brey78v5pvfd7" path="res://Assets/whitebg.png" id="2_2f8nh"]
+[ext_resource type="PackedScene" uid="uid://bndgpnd138g1" path="res://Scenes/Train/boxcar1.tscn" id="3_6nyf5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+script = ExtResource("1_vxn1v")
+
+[node name="Guy" parent="." instance=ExtResource("1_hx1a7")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_2f8nh")
+
+[node name="Boxcar1" parent="." instance=ExtResource("3_6nyf5")]
+position = Vector2(369, 175)
+scale = Vector2(0.7, 0.7)
