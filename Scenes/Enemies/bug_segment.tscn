@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckg7ssep3ykkp"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/bug_segment.gd" id="1_g0n4y"]
+[ext_resource type="Texture2D" uid="uid://dnwapdm7h2m8m" path="res://Assets/bug.png" id="1_hfbpr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hstqj"]
+size = Vector2(16, 14)
+
+[node name="BugSegment" type="Area2D"]
+script = ExtResource("1_g0n4y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hfbpr")
+hframes = 8
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hstqj")

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bawr64aj8n2gc"]
+[gd_scene load_steps=8 format=3 uid="uid://bawr64aj8n2gc"]
 
 [ext_resource type="PackedScene" uid="uid://bghm1h5hgm6do" path="res://Scenes/guy.tscn" id="1_hx1a7"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_vxn1v"]
 [ext_resource type="Texture2D" uid="uid://brey78v5pvfd7" path="res://Assets/whitebg.png" id="2_2f8nh"]
 [ext_resource type="PackedScene" uid="uid://bndgpnd138g1" path="res://Scenes/Train/boxcar1.tscn" id="3_6nyf5"]
+[ext_resource type="PackedScene" uid="uid://4yvhwu5ffjol" path="res://Scenes/Train/tankcar1.tscn" id="5_fj0a3"]
+[ext_resource type="PackedScene" uid="uid://ba52yx2swaeen" path="res://Scenes/Enemies/bug.tscn" id="6_7r25h"]
+[ext_resource type="PackedScene" uid="uid://dtoiecq0twnan" path="res://Scenes/Enemies/saw_blade.tscn" id="7_10ncw"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,7 +19,19 @@ script = ExtResource("1_vxn1v")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 texture = ExtResource("2_2f8nh")
+script = ExtResource("1_vxn1v")
 
 [node name="Boxcar1" parent="." instance=ExtResource("3_6nyf5")]
 position = Vector2(369, 175)
 scale = Vector2(0.7, 0.7)
+
+[node name="Tankcar1" parent="." instance=ExtResource("5_fj0a3")]
+position = Vector2(-795, 155)
+scale = Vector2(0.3, 0.3)
+
+[node name="Bug" parent="." instance=ExtResource("6_7r25h")]
+position = Vector2(252, 6)
+
+[node name="SawBlade" parent="." instance=ExtResource("7_10ncw")]
+position = Vector2(-4.76837e-07, -100)
+scale = Vector2(0.1, 0.1)

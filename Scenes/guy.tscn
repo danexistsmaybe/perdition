@@ -1,18 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://bghm1h5hgm6do"]
+[gd_scene load_steps=18 format=3 uid="uid://bghm1h5hgm6do"]
 
 [ext_resource type="Script" path="res://scripts/guy.gd" id="1_b6aen"]
 [ext_resource type="Texture2D" uid="uid://b6mhxl4lphm10" path="res://Assets/placeholder_character.png" id="1_wlk6v"]
 [ext_resource type="PackedScene" uid="uid://b2ddo02l8waqf" path="res://Scenes/Attacks/energy_beam.tscn" id="2_qtnp1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp4u8"]
-size = Vector2(10, 24)
 
 [sub_resource type="Animation" id="Animation_yls11"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("spritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +21,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/path = NodePath("spritesheet:frame_coords")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +38,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("spritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +55,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("spritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,6 +65,68 @@ tracks/0/keys = {
 "values": [0, 1, 2, 7, 2, 6, 2, 4, 2, 5, 2, 0, 1, 2, 3, 2, 0, 1, 2, 3, 2, 0, 0]
 }
 
+[sub_resource type="Animation" id="Animation_d6v3u"]
+resource_name = "jump_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.225, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [47, 46, 45, 44]
+}
+
+[sub_resource type="Animation" id="Animation_4bw15"]
+resource_name = "jump_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.425),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43]
+}
+
+[sub_resource type="Animation" id="Animation_6w2p3"]
+resource_name = "land_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [55, 54, 53, 52]
+}
+
+[sub_resource type="Animation" id="Animation_rmdsk"]
+resource_name = "land_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51]
+}
+
 [sub_resource type="Animation" id="Animation_cocgs"]
 resource_name = "run_left"
 length = 0.9
@@ -75,7 +134,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("spritesheet:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,7 +151,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("spritesheet:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -109,7 +168,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("spritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +185,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("spritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -142,7 +201,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("spritesheet:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -158,7 +217,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("spritesheet:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -173,6 +232,10 @@ _data = {
 "RESET": SubResource("Animation_yls11"),
 "idle": SubResource("Animation_o1mph"),
 "idle_dance": SubResource("Animation_fx3vh"),
+"jump_left": SubResource("Animation_d6v3u"),
+"jump_right": SubResource("Animation_4bw15"),
+"land_left": SubResource("Animation_6w2p3"),
+"land_right": SubResource("Animation_rmdsk"),
 "run_left": SubResource("Animation_cocgs"),
 "run_right": SubResource("Animation_2tuqg"),
 "slide_left": SubResource("Animation_rkj1h"),
@@ -182,16 +245,18 @@ _data = {
 }
 
 [node name="Guy" type="CharacterBody2D"]
+collision_mask = 26
 script = ExtResource("1_b6aen")
 EnergyBeam = ExtResource("2_qtnp1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_fp4u8")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 0.5)
+polygon = PackedVector2Array(-4, 11.5, -2, 1.5, -4, -2.5, -2, -6.5, -2, -11.5, 2, -11.5, 2, -6.5, 4, -2.5, 2, 1.5, 4, 11.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="spritesheet" type="Sprite2D" parent="."]
 texture = ExtResource("1_wlk6v")
 hframes = 8
-vframes = 5
+vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

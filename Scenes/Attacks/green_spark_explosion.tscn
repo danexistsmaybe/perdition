@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://chy4qr2rndofw"]
+
+[ext_resource type="Texture2D" uid="uid://xw3dala4ubjc" path="res://Assets/spark.png" id="1_danln"]
+
+[sub_resource type="Curve" id="Curve_bmcj5"]
+_data = [Vector2(0, 0.00870001), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gct4n"]
+curve = SubResource("Curve_bmcj5")
+
+[sub_resource type="Curve" id="Curve_bjynm"]
+_data = [Vector2(0, 0.181679), 0.0, 0.0, 0, 0, Vector2(0.994898, 0.0270188), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fjhea"]
+curve = SubResource("Curve_bjynm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xjhvy"]
+lifetime_randomness = 0.5
+angle_min = -90.0
+angle_max = 90.0
+spread = 70.842
+initial_velocity_min = 40.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 70, 0)
+damping_min = 80.0
+damping_max = 150.0
+scale_curve = SubResource("CurveTexture_fjhea")
+alpha_curve = SubResource("CurveTexture_gct4n")
+turbulence_enabled = true
+
+[node name="GreenSparkExplosion" type="GPUParticles2D"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_xjhvy")
+texture = ExtResource("1_danln")
+lifetime = 0.5
+explosiveness = 0.17
