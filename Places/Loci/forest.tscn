@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b351vygaxxl6a"]
 
 [ext_resource type="Texture2D" uid="uid://cthxwvpykjoqy" path="res://Assets/Tiles/tilemap_forest.png" id="1_3rfu7"]
-[ext_resource type="Script" path="res://Scripts/Debug/follow_mouse.gd" id="2_hhx0b"]
+[ext_resource type="Script" uid="uid://co6nr1nyrkop3" path="res://Scripts/Debug/follow_mouse.gd" id="2_hhx0b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cisrv"]
 texture = ExtResource("1_3rfu7")
