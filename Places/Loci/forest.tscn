@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://b351vygaxxl6a"]
+[gd_scene load_steps=17 format=4 uid="uid://b351vygaxxl6a"]
 
 [ext_resource type="Texture2D" uid="uid://cthxwvpykjoqy" path="res://Assets/Tiles/tilemap_forest.png" id="1_3rfu7"]
-[ext_resource type="Script" uid="uid://co6nr1nyrkop3" path="res://Scripts/Debug/follow_mouse.gd" id="2_hhx0b"]
 [ext_resource type="AudioStream" uid="uid://c6xhsl7ebbsmp" path="res://Assets/Audio/OST/overworld_theme_1.wav" id="3_gaanr"]
+[ext_resource type="Shader" uid="uid://b4mocqr35cwo1" path="res://Resources/Shaders/mist.gdshader" id="4_omnur"]
+[ext_resource type="Texture2D" uid="uid://cm8jomvq3mya7" path="res://icon.svg" id="5_g7dmn"]
+[ext_resource type="Shader" uid="uid://diraql2s6my6l" path="res://Resources/Shaders/darkness.gdshader" id="5_omnur"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gaanr"]
+polygon = PackedVector2Array(0.862967, 1.92899, 8, 4.06102, -8, 3.45187)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cisrv"]
 texture = ExtResource("1_3rfu7")
@@ -43,6 +48,7 @@ texture = ExtResource("1_3rfu7")
 2:2/0 = 0
 3:2/0 = 0
 3:2/0/y_sort_origin = -1
+3:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_gaanr")
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -0.179859, -8, -1.07915, -8, 8, 8, 8)
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -4.49647, -0.989223, -5.39576, -1.5288, 3.41732, 8, 4.67633)
@@ -119,8 +125,37 @@ texture = ExtResource("1_3rfu7")
 11:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ci4gv"]
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_cisrv")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_omnur"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g7dmn"]
+seamless = true
+noise = SubResource("FastNoiseLite_omnur")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7i6y"]
+shader = ExtResource("4_omnur")
+shader_parameter/noise = SubResource("NoiseTexture2D_g7dmn")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g7dmn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g7i6y"]
+seamless = true
+noise = SubResource("FastNoiseLite_g7dmn")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g7i6y"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qodu3"]
+seamless = true
+noise = SubResource("FastNoiseLite_g7i6y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qodu3"]
+shader = ExtResource("5_omnur")
+shader_parameter/noise = SubResource("NoiseTexture2D_g7i6y")
+shader_parameter/warp_noise = SubResource("NoiseTexture2D_qodu3")
 
 [node name="Forest" type="Node2D"]
 
@@ -133,7 +168,7 @@ tile_set = SubResource("TileSet_ci4gv")
 
 [node name="ground1" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD///b/AQAGAAUAAAAAAPb/AQAGAAUAAAABAPb/AQAGAAUAAAACAPb/AQAGAAUAAAADAPb/AQAGAAUAAAAEAPb/AQAGAAUAAAAFAPb/AQAGAAUAAAAGAPb/AQAGAAUAAAAHAPb/AQAGAAUAAAD///X/AQAGAAUAAAAAAPX/AQAGAAUAAAABAPX/AQAGAAUAAAACAPX/AQAGAAUAAAADAPX/AQAGAAUAAAAEAPX/AQAGAAUAAAAFAPX/AQAGAAUAAAAGAPX/AQAGAAUAAAAHAPX/AQAGAAUAAAD+//X/AQAGAAUAAAD9//X/AQAGAAUAAAD8//X/AQAGAAUAAAD7//X/AQAGAAUAAAD6//X/AQAGAAUAAAD+//b/AQAGAAUAAAD9//b/AQAGAAUAAAD8//b/AQAGAAUAAAD7//b/AQAGAAUAAAD6//b/AQAGAAUAAAAIAPX/AQAGAAUAAAAJAPX/AQAGAAUAAAAKAPX/AQAGAAUAAAALAPX/AQAGAAUAAAAIAPb/AQAGAAUAAAAJAPb/AQAGAAUAAAAKAPb/AQAGAAUAAAALAPb/AQAGAAUAAAAMAPb/AQAGAAUAAAANAPb/AQAGAAUAAAAOAPb/AQAGAAUAAAAMAPX/AQAGAAUAAAANAPX/AQAGAAUAAAAOAPX/AQAGAAUAAAD+////AQAAAAUAAAD/////AQAAAAUAAAD///7/AQAAAAUAAAD+//7/AQAAAAUAAAD///3/AQAAAAUAAAAAAP3/AQAAAAUAAAABAP3/AQAAAAUAAAACAP3/AQAAAAUAAAADAP3/AQAAAAUAAAADAP7/AQAAAAUAAAAEAP7/AQAAAAUAAAAFAP7/AQAAAAUAAAAFAP//AQAAAAUAAAAFAAAAAQAAAAUAAAAFAAEAAQAAAAUAAAAEAAEAAQAAAAUAAAAEAAIAAQAAAAUAAAADAAIAAQAAAAUAAAACAAIAAQAAAAUAAAABAAIAAQAAAAUAAAAAAAIAAQAAAAUAAAD//wIAAQAAAAUAAAD//wEAAQAAAAUAAAD//wAAAQAAAAUAAAD+/wAAAQAAAAUAAAAAAAAAAQAAAAUAAAABAAAAAQAAAAUAAAAAAAEAAQAAAAUAAAABAAEAAQAAAAUAAAACAAEAAQAAAAUAAAADAAEAAQAAAAUAAAADAAAAAQAAAAUAAAAEAAAAAQAAAAUAAAAEAP//AQAAAAUAAAADAP//AQAAAAUAAAACAAAAAQAAAAUAAAABAP//AQAAAAUAAAAAAP//AQAAAAUAAAAAAP7/AQAAAAUAAAABAP7/AQAAAAUAAAACAP7/AQAAAAUAAAACAP//AQAAAAUAAAA=")
+tile_map_data = PackedByteArray("AAACAPb/AQAGAAUAAAADAPb/AQAGAAUAAAAEAPb/AQAGAAUAAAAFAPb/AQAGAAUAAAAGAPb/AQAGAAUAAAAHAPb/AQAGAAUAAAACAPX/AQAGAAUAAAADAPX/AQAGAAUAAAAEAPX/AQAGAAUAAAAFAPX/AQAGAAUAAAAGAPX/AQAGAAUAAAAHAPX/AQAGAAUAAAAIAPX/AQAGAAUAAAAJAPX/AQAGAAUAAAAKAPX/AQAGAAUAAAALAPX/AQAGAAUAAAAIAPb/AQAGAAUAAAAJAPb/AQAGAAUAAAAKAPb/AQAGAAUAAAALAPb/AQAGAAUAAAAMAPb/AQAGAAUAAAANAPb/AQAGAAUAAAAOAPb/AQAGAAUAAAAMAPX/AQAGAAUAAAANAPX/AQAGAAUAAAAOAPX/AQAGAAUAAAD+////AQAAAAUAAAD/////AQAAAAUAAAD///7/AQAAAAUAAAD+//7/AQAAAAUAAAD///3/AQAAAAUAAAAAAP3/AQAAAAUAAAABAP3/AQAAAAUAAAACAP3/AQAAAAUAAAADAP3/AQAAAAUAAAADAP7/AQAAAAUAAAAEAP7/AQAAAAUAAAAFAP7/AQAAAAUAAAAFAP//AQAAAAUAAAAFAAAAAQAAAAUAAAAFAAEAAQAAAAUAAAAEAAEAAQAAAAUAAAAEAAIAAQAAAAUAAAADAAIAAQAAAAUAAAACAAIAAQAAAAUAAAABAAIAAQAAAAUAAAAAAAIAAQAAAAUAAAD//wIAAQAAAAUAAAD//wEAAQAAAAUAAAD//wAAAQAAAAUAAAD+/wAAAQAAAAUAAAAAAAAAAQAAAAUAAAABAAAAAQAAAAUAAAAAAAEAAQAAAAUAAAABAAEAAQAAAAUAAAACAAEAAQAAAAUAAAADAAEAAQAAAAUAAAADAAAAAQAAAAUAAAAEAAAAAQAAAAUAAAAEAP//AQAAAAUAAAADAP//AQAAAAUAAAACAAAAAQAAAAUAAAABAP//AQAAAAUAAAAAAP//AQAAAAUAAAAAAP7/AQAAAAUAAAABAP7/AQAAAAUAAAACAP7/AQAAAAUAAAACAP//AQAAAAUAAAA=")
 tile_set = SubResource("TileSet_ci4gv")
 
 [node name="ground2" type="TileMapLayer" parent="TileMap"]
@@ -153,7 +188,18 @@ tile_set = SubResource("TileSet_ci4gv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-script = ExtResource("2_hhx0b")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_gaanr")
+
+[node name="mist" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g7i6y")
+scale = Vector2(3, 3)
+texture = ExtResource("5_g7dmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_qodu3")
+position = Vector2(3, 0.999998)
+scale = Vector2(2.39063, 2.09375)
+texture = ExtResource("5_g7dmn")
