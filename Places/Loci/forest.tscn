@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://b351vygaxxl6a"]
+[gd_scene load_steps=19 format=4 uid="uid://dplg0bdflda3q"]
 
 [ext_resource type="PackedScene" uid="uid://d30femj8psrp1" path="res://UI/ui_layer_overworld.tscn" id="1_8c3hp"]
 [ext_resource type="Script" uid="uid://c1n5e5fk5udon" path="res://Scripts/Misc/follow_player.gd" id="2_g7i6y"]
 [ext_resource type="TileSet" uid="uid://c7anot4uudais" path="res://Resources/TileSets/forest.tres" id="2_qodu3"]
-[ext_resource type="AudioStream" uid="uid://c6xhsl7ebbsmp" path="res://Assets/Audio/OST/overworld_theme_1.wav" id="3_gaanr"]
+[ext_resource type="AudioStream" uid="uid://dyecgx06or5yy" path="res://Assets/Audio/OST/Overworld Theme 1.wav" id="4_8c3hp"]
 [ext_resource type="Shader" uid="uid://b4mocqr35cwo1" path="res://Resources/Shaders/mist.gdshader" id="4_omnur"]
 [ext_resource type="Texture2D" uid="uid://cm8jomvq3mya7" path="res://icon.svg" id="5_g7dmn"]
 [ext_resource type="Shader" uid="uid://diraql2s6my6l" path="res://Resources/Shaders/darkness.gdshader" id="5_omnur"]
@@ -80,7 +80,8 @@ position_smoothing_speed = 10.0
 script = ExtResource("2_g7i6y")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_gaanr")
+stream = ExtResource("4_8c3hp")
+autoplay = true
 
 [node name="Darkness" type="Sprite2D" parent="."]
 visible = false
@@ -106,6 +107,21 @@ texture = ExtResource("5_g7dmn")
 [node name="Y-Sort Layer Kill Me Please Oh God" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="DialogueTest" type="StaticBody2D" parent="Y-Sort Layer Kill Me Please Oh God"]
+z_index = 2
+position = Vector2(-35, -37)
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("9_8c3hp")
+dialogue = "[rainbow]It was the best of ti[/rainbow]mes, it was the worst of times: it was the time I lost my virginity."
+
+[node name="Sprite2S" type="Sprite2D" parent="Y-Sort Layer Kill Me Please Oh God/DialogueTest"]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_g7dmn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y-Sort Layer Kill Me Please Oh God/DialogueTest"]
+shape = SubResource("RectangleShape2D_qodu3")
+
 [node name="ylayer0" type="TileMapLayer" parent="Y-Sort Layer Kill Me Please Oh God"]
 z_index = 2
 y_sort_enabled = true
@@ -116,18 +132,3 @@ tile_set = ExtResource("2_qodu3")
 z_index = 2
 y_sort_enabled = true
 position = Vector2(95, 26)
-
-[node name="DialogueTest" type="StaticBody2D" parent="."]
-z_index = 2
-position = Vector2(-35, -37)
-collision_layer = 4
-collision_mask = 15
-script = ExtResource("9_8c3hp")
-dialogue = "[rainbow]It was the best of ti[/rainbow]mes, it was the worst of times: it was the time I lost my virginity."
-
-[node name="Sprite2S" type="Sprite2D" parent="DialogueTest"]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("5_g7dmn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTest"]
-shape = SubResource("RectangleShape2D_qodu3")
