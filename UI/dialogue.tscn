@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3f4r2bt62f4a"]
+
+[ext_resource type="Script" uid="uid://b6mvcmabaput1" path="res://Scripts/UI/dialogue.gd" id="1_f8kjv"]
+[ext_resource type="Texture2D" uid="uid://b407x54cewiex" path="res://Assets/UI/dialogue_box_9_patch.png" id="2_347mh"]
+[ext_resource type="FontFile" uid="uid://gls0sfppd3l1" path="res://Assets/UI/Qapixa-5y9Pa.ttf" id="3_6k0i6"]
+
+[node name="Dialogue" type="Node2D"]
+script = ExtResource("1_f8kjv")
+
+[node name="DialogueUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 57.0
+offset_right = 202.0
+offset_bottom = 177.0
+
+[node name="DialogueBox" type="NinePatchRect" parent="DialogueUI"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 50.0
+offset_right = 221.0
+offset_bottom = 130.0
+texture = ExtResource("2_347mh")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueUI"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 70.0
+offset_right = 199.0
+offset_bottom = 114.0
+theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("3_6k0i6")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Title" type="Control" parent="DialogueUI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleCard" type="NinePatchRect" parent="DialogueUI/Title"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 27.0
+offset_right = 109.0
+offset_bottom = 62.0
+texture = ExtResource("2_347mh")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="TitleCardText" type="RichTextLabel" parent="DialogueUI/Title"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 41.0
+offset_right = 92.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("3_6k0i6")
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+scroll_active = false

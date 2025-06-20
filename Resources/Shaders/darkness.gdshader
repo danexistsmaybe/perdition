@@ -20,7 +20,7 @@ void fragment() {
 	
 	float sample = texture(noise, (radial_uv*vec2(4,1)) + vec2(0,.04*TIME) + vec2(warp)).r;
 	
-	COLOR = 0.*vec4(0,0,0,pow(radius,.5)) + (vec4(0,0,0,2.*pow(radius + (sin(TIME)*.1-.2) - .1*warp, .5) - 1.*sample*sample*sample));
+	COLOR = 0.*vec4(0,0,0,pow(radius,.5)) + (vec4(0,0,0,2.*pow(radius + 0.*(sin(TIME)*.1-.2) - .1*warp, .5) - 1.*sample*sample*sample));
 	
 	/*if (sample < .5) {
 		COLOR = vec4(0,0,0,3.*radius) + vec4(0,0,0,radius - sample);

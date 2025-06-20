@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d30femj8psrp1"]
+
+[ext_resource type="PackedScene" uid="uid://c3f4r2bt62f4a" path="res://UI/dialogue.tscn" id="1_yoa28"]
+
+[node name="UiLayerOverworld" type="CanvasLayer"]
+
+[node name="Dialogue" parent="." instance=ExtResource("1_yoa28")]
