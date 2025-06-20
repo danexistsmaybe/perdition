@@ -1,8 +1,5 @@
 [gd_scene load_steps=19 format=4 uid="uid://b351vygaxxl6a"]
 
-[ext_resource type="AudioStream" uid="uid://dyecgx06or5yy" path="res://Assets/Audio/OST/Overworld Theme 1.wav" id="3_gaanr"]
-[ext_resource type="AudioStream" uid="uid://bx5grt28bh2v6" path="res://Assets/Audio/OST/chiptune beginnings.mp3" id="4_qcvqn"]
-
 [ext_resource type="PackedScene" uid="uid://d30femj8psrp1" path="res://UI/ui_layer_overworld.tscn" id="1_8c3hp"]
 [ext_resource type="Script" uid="uid://c1n5e5fk5udon" path="res://Scripts/Misc/follow_player.gd" id="2_g7i6y"]
 [ext_resource type="TileSet" uid="uid://c7anot4uudais" path="res://Resources/TileSets/forest.tres" id="2_qodu3"]
@@ -77,16 +74,6 @@ tile_map_data = PackedByteArray("AAAFAPj/AQAHAAAAAAACAPr/AQAGAAEAAAAEAPz/AQAFAAE
 tile_set = ExtResource("2_qodu3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-script = ExtResource("2_hhx0b")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_gaanr")
-autoplay = true
-
-[node name="temporary audioplayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_qcvqn")
-
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
