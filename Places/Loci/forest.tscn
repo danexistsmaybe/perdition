@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://b351vygaxxl6a"]
+[gd_scene load_steps=7 format=4 uid="uid://b351vygaxxl6a"]
 
 [ext_resource type="Texture2D" uid="uid://cthxwvpykjoqy" path="res://Assets/Tiles/tilemap_forest.png" id="1_3rfu7"]
-[ext_resource type="Script" uid="uid://co6nr1nyrkop3" path="res://Scripts/Debug/follow_mouse.gd" id="2_hhx0b"]
+[ext_resource type="Script" uid="uid://dexcmhm71acnp" path="res://Scripts/Debug/follow_mouse.gd" id="2_hhx0b"]
+[ext_resource type="AudioStream" uid="uid://dyecgx06or5yy" path="res://Assets/Audio/OST/Overworld Theme 1.wav" id="3_gaanr"]
+[ext_resource type="AudioStream" uid="uid://bx5grt28bh2v6" path="res://Assets/Audio/OST/chiptune beginnings.mp3" id="4_qcvqn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cisrv"]
 texture = ExtResource("1_3rfu7")
@@ -112,3 +114,10 @@ tile_set = SubResource("TileSet_ci4gv")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 script = ExtResource("2_hhx0b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gaanr")
+autoplay = true
+
+[node name="temporary audioplayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qcvqn")
