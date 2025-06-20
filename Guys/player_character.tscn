@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8anmin1ijs68"]
+
+[ext_resource type="Shader" uid="uid://bagq8blwvx07l" path="res://Guys/evil.gdshader" id="1_5haxv"]
+[ext_resource type="Script" uid="uid://cm8lktpvck5n2" path="res://Scripts/Guys/player_character.gd" id="1_lk4rj"]
+[ext_resource type="Texture2D" uid="uid://cm8jomvq3mya7" path="res://icon.svg" id="2_lk4rj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5vds"]
+shader = ExtResource("1_5haxv")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lk4rj"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lk4rj"]
+radius = 4.0
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+collision_mask = 30
+script = ExtResource("1_lk4rj")
+
+[node name="Evil Godot" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_r5vds")
+position = Vector2(0, -10)
+scale = Vector2(0.125, 0.25)
+texture = ExtResource("2_lk4rj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lk4rj")
+
+[node name="InteractionZone" type="Area2D" parent="."]
+position = Vector2(0, 5)
+collision_layer = 16
+collision_mask = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+shape = SubResource("CircleShape2D_lk4rj")
+debug_color = Color(0.800491, 0.800491, 0.800491, 0.407843)
