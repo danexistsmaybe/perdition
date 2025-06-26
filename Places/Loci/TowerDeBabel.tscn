@@ -1,11 +1,9 @@
-
-[gd_scene load_steps=12 format=4 uid="uid://bfwy4hx86ac08"]
+[gd_scene load_steps=11 format=4 uid="uid://bfwy4hx86ac08"]
 
 [ext_resource type="Texture2D" uid="uid://ct7plb3ct1lhb" path="res://Assets/Tiles/Tower_Of_Babel_Floor_Tiles (1).png" id="1_6s2vd"]
 [ext_resource type="PackedScene" uid="uid://d30femj8psrp1" path="res://UI/ui_layer_overworld.tscn" id="1_c3ftb"]
 [ext_resource type="Script" uid="uid://c1n5e5fk5udon" path="res://Scripts/Misc/follow_player.gd" id="3_knyx6"]
 [ext_resource type="PackedScene" uid="uid://c8anmin1ijs68" path="res://Guys/player_character.tscn" id="4_hne6l"]
-[ext_resource type="AudioStream" uid="uid://dyecgx06or5yy" path="res://Assets/Audio/OST/Overworld Theme 1.wav" id="5_hne6l"]
 [ext_resource type="Script" uid="uid://blkv0yujl5ynv" path="res://Scripts/Misc/dialogue.gd" id="5_q2e22"]
 [ext_resource type="Texture2D" uid="uid://badqlhe26134j" path="res://Assets/NPCS/Spaceman.png" id="7_c3ftb"]
 
@@ -52,7 +50,6 @@ sources/0 = SubResource("TileSetAtlasSource_fvjjw")
 size = Vector2(17, 16)
 
 [node name="TowerDeBabel" type="Node2D"]
-script = ExtResource("1_fvjjw")
 
 [node name="UiLayerOverworld" parent="." instance=ExtResource("1_c3ftb")]
 
@@ -86,7 +83,6 @@ y_sort_enabled = true
 position = Vector2(-55, 25)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_hne6l")
 autoplay = true
 
 [node name="DialogueTest" type="StaticBody2D" parent="."]
