@@ -5,6 +5,7 @@ extends Node2D
 @onready var Title : Control = UI.get_node("Title")
 @onready var TitleText : RichTextLabel = Title.get_node("TitleCardText")
 @onready var DialogueText : RichTextLabel = UI.get_node("DialogueText")
+@onready var Sounds : Node2D = $Sounds
 
 
 # machinary
@@ -25,6 +26,9 @@ func _ready():
 	state = States.WAITING
 	UI.visible = false
 
+	UI.get_node("DialogueBox").size = Vector2(320, 80)
+	DialogueText.size = Vector2(286, 44)
+
 
 func _physics_process(_delta):
 	process_state()
@@ -44,6 +48,8 @@ func process_state():
 				set_timer("typing", 25)
 			else:
 				set_timer("typing", 3)
+			if randi() % 2 == 0:
+				Sounds.get_node("TalkSound").play()
 
 
 func set_state(new_state):
@@ -90,6 +96,7 @@ func process_controls():
 			load_next_chunk()
 			DialogueText.visible_characters = 0
 			Title.visible = false
+			Sounds.get_node("NextSound").play()
 
 func attempt_dialogue(obj : Node2D):
 	if "dialogue" in obj:
@@ -111,22 +118,29 @@ func say(text : String, title : String = ""):
 func load_next_chunk():
 	current_text = ""
 	var remaining_words = text_block.substr(index).split(" ")
-	var chr_count = 0
 	var word_count = 0
+	var line_count = 0
+	var line_marker = 0
 	for word in remaining_words:
 		# break out conditions
-		if len(word) + chr_count > 90:
-			if word_count > 5:
-				break
+		if get_dialogue_length(current_text.substr(line_marker) + word).x > .95*DialogueText.size.x:
+			if word_count > 3:
+				line_count += 1
+				word_count = 0
+				line_marker = len(current_text)
 			else:
 				# add a portion of the new word
-				current_text = current_text + word.substr(clamp(60 - len(current_text), 2, 30))
-				break
-		
+				var word_length = get_dialogue_length(word).x
+				var proportion = (.95*DialogueText.size.x - get_dialogue_length(current_text.substr(line_marker) + word).x / word_length)
+				current_text = current_text + word.substr(floor(proportion*len(word)))
+				line_count += 1
+				word_count = 0
+				line_marker = len(current_text)
+		if line_count > 2:
+			break
 		# loop body
 		current_text = current_text + word + " "
 		word_count += 1
-		chr_count += (1 + len(word))
 	DialogueText.text = current_text
 	DialogueText.visible_characters = 0
 
@@ -150,3 +164,16 @@ func check_timer(_name, read_null_as = false) -> bool:
 
 func rm_timer(_name):
 	timers.erase(_name)
+
+
+
+
+
+
+
+
+
+# convenience
+
+func get_dialogue_length(text):
+	return DialogueText.get_theme_font("normal_font").get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 10)

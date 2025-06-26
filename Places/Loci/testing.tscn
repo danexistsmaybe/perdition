@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgf45vrr72rki"]
+
+[ext_resource type="Script" uid="uid://bht6wn1vddvxd" path="res://Scripts/Misc/subviewport.gd" id="1_iyvb8"]
+[ext_resource type="PackedScene" uid="uid://b351vygaxxl6a" path="res://Places/Loci/forest.tscn" id="2_r4vew"]
+
+[node name="Testing" type="Node2D"]
+script = ExtResource("1_iyvb8")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(320, 180)
+
+[node name="Forest" parent="SubViewport" instance=ExtResource("2_r4vew")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2

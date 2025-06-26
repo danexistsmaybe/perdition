@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcj8ga2elwfm7"]
+
+[ext_resource type="Shader" uid="uid://dom5p8o5wueie" path="res://Resources/Shaders/pixel.gdshader" id="1_v0xi4"]
+[ext_resource type="Texture2D" uid="uid://cm8jomvq3mya7" path="res://icon.svg" id="2_6oi0b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7qaj"]
+shader = ExtResource("1_v0xi4")
+
+[node name="PixelEffectLayer" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_p7qaj")
+position = Vector2(162, 92)
+scale = Vector2(3, 3)
+texture = ExtResource("2_6oi0b")
