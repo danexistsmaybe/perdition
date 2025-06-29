@@ -15,13 +15,17 @@ enum AnimationStates {
 	WALKING
 }
 
+var true_position : Vector2
 var direction = Vector2(0,1)
 
 
 
 func _ready():
 	GlobalBus.set_player_reference(self)
+	true_position = position
 
+func _process(_delta):
+	position = Vector2(round(true_position.x), round(true_position.y))
 
 func _physics_process(_delta):
 	process_controls()

@@ -23,7 +23,7 @@ GlobalBus="*res://Scripts/Buses/global_bus.gd"
 
 window/size/viewport_width=320
 window/size/viewport_height=180
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

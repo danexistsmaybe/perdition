@@ -10,16 +10,16 @@ void vertex() {
 void fragment() {
 	vec2 center = vec2(0.5);
 	vec2 delta = UV - center;
-	
+
 	float radius = length(delta);          // distance from center
 	float angle = atan(delta.y, delta.x);  // angle in radians
-	
+
 	vec2 radial_uv = vec2((angle + PI) / (2.0 * PI), radius);
-	
+
 	float warp = texture(warp_noise, radial_uv).x;
-	
+
 	float sample = texture(noise, (radial_uv*vec2(4,1)) + vec2(0,.04*TIME) + vec2(warp)).r;
-	
+
 	vec4 color_cont = 0.*vec4(0,0,0,pow(radius,.5)) + (vec4(0,0,0,2.*pow(radius + 0.*(sin(TIME)*.1-.2) - .1*warp, .5) - 1.*sample*sample*sample));
 	COLOR = floor(color_cont * 3.)/3.;
 	/*if (sample < .5) {

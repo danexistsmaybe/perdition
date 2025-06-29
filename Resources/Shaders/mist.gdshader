@@ -8,10 +8,10 @@ void vertex() {
 
 void fragment() {
 	vec2 pixel_uv = floor(UV * 128.*10.)/(128.*10.);
-	
+
 	float sample1 = .5*texture(noise, pixel_uv + .05*TIME*vec2(0.05,0.05)).x;
 	float sample2 = .5*texture(noise, pixel_uv + 100. + .05*TIME*vec2(0.00,-.1)).x;
-	
+
 	COLOR = floor(vec4(
 		vec3(sample1 + sample2),
 		.09+.15*sample1 + .1*sample2
